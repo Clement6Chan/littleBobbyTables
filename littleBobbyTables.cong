@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+
+             ServerName littleBobbyTables
+             
+             WSGIScriptAlias / /var/www/littleBobbyTables/littleBobbyTables.wsgi
+             <Directory /var/www/littleBobbyTables/littleBobbyTables/>
+                        Order allow,deny
+                        Allow from all
+             </Directory>
+
+             Alias /static /var/www/littleBobbyTables/littleBobbyTables/static
+             <Directory /var/www/littleBobbyTables/littleBobbyTables/static/>
+                        Order allow,deny
+                        Allow from all
+              </Directory>
+
+</VirtualHost>

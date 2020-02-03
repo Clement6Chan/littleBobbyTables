@@ -1,0 +1,25 @@
+{% extends "parent.html" %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block pagename %}
+  Login
+{% endblock %}
+
+{% block content %}
+<form action = "/login" method="POST">
+  <br>
+  Username:<br>
+  <input type="text" name="username"><br>
+  Password:<br>
+  <input type="password" name="password"><br><br>
+  <input type = "submit" name = "login" value = "Sign In"><br>
+</form>
+<form action = "/" method="GET">
+  <p>
+  <input type = "submit" value = "Back"> {# to welcome page #}
+  </p>
+</form>
+{% endblock %}

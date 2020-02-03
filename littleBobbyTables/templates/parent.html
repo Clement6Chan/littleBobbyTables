@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+  {% block head %}
+  <title> {% block title %} {% endblock %}
+    || little_bobby_tables
+  </title>
+  {% endblock %}
+</head>
+<body>
+  <h2>
+  {% block pagename %}
+    little_bobby_tables
+  {% endblock %}
+  </h2>
+  {% block message %}
+   {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+      <i>{{ message }}</i> <br />
+    {% endfor %}
+  {% endblock %}
+  <br />
+  {% block logout %}
+    {% if username %}
+      <form action = "/logout" method="GET">
+        Welcome <i>{{username}}</i>!
+        <input type = "submit" value = "Logout">
+      </form>
+    {% else %}
+      <i>You are not logged in.</i>
+    {% endif %}
+  {% endblock %}
+
+  <br>
+  {% block content %}
+  {% endblock %}
+  <br>
+  {% block footer %}
+    Copyright 2019
+    <br>
+    little_bobby_tables
+    <br>
+    Amanda Chen, Tanzim Elahi, Kiran Vuksanaj
+  {% endblock %}
+</body>
