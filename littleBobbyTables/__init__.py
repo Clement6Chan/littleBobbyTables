@@ -10,6 +10,10 @@ import os
 import sqlite3
 import databasing
 
+os.path.dirname(__file__)
+DIR = os.path.dirname(__file__) or '.'
+DIR += '/'
+
 #the sqlite part to create a database
 databasing.buildDB()
 
