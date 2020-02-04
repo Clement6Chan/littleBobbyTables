@@ -1,10 +1,3 @@
-# Team Robert’); DROP TABLE S\*;-- (a.k.a little_bobby_tables)
-#       Amanda Chen (PM), Kiran Vuksanaj, Tanzim Elahi
-# SoftDev1 Pd1
-# P00 -- Da Art of Storytellin' (Part X)
-# 2019-10-17
-
-
 from flask import Flask, render_template, request, redirect, url_for,session, flash, get_flashed_messages
 import os
 import sqlite3
@@ -219,5 +212,5 @@ def readstory():
         flash('Please log in to access this page.')
         return redirect(url_for('root'))
 if __name__ == "__main__":
-    app.debug = True
+    app.debug = False
     app.run()
