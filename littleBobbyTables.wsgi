@@ -6,4 +6,4 @@ sys.path.insert(0,"/var/www/littleBobbyTables/littleBobbyTables/")
 import logging
 logging.basicConfig(stream=sys.stderr)
 
-fromlittleBobbyTables import app as application
+from littleBobbyTables import app as application
