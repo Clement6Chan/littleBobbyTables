@@ -1,8 +1,12 @@
 import sqlite3, hashlib
+import os
 
+DIR = os.path.dirname(__file__) or '.'
+DIR += '/data.db'
+
+DIR =
 def buildDB(): #builds a database with three tables
-    data="/var/www/littleBobbyTables/littleBobbyTables/utils/data.db"
-    db=sqlite3.connect(data)
+    db=sqlite3.connect(DIR)
     c=db.cursor()
     command="CREATE TABLE if not EXISTS Story_List(ID INTEGER PRIMARY KEY, Title TEXT, Story TEXT)"
     c.execute(command)
@@ -14,8 +18,7 @@ def buildDB(): #builds a database with three tables
     db.close()
 
 def verifyUser(user): #searches database if user exists
-    data="data.db"
-    db=sqlite3.connect(data)
+    db=sqlite3.connect(DIR)
     c=db.cursor()
 
     command = "SELECT count(*) FROM Accounts WHERE Username=\"{}\";"
@@ -28,8 +31,7 @@ def verifyUser(user): #searches database if user exists
     db.close()
 
 def rightLogin(user,givenPass): #searches database to match username and password
-    data="data.db"
-    db=sqlite3.connect(data)
+    db=sqlite3.connect(DIR)
     c=db.cursor()
     command='''
              Select Password
@@ -47,8 +49,7 @@ def rightLogin(user,givenPass): #searches database to match username and passwor
     db.close()
 
 def addUser(user,p): #adds user name and pass into database
-    data="data.db"
-    db=sqlite3.connect(data)
+    db=sqlite3.connect(DIR)
     c=db.cursor()
 
     command="INSERT INTO Accounts VALUES(\"{}\",\"{}\")"
@@ -59,7 +60,7 @@ def addUser(user,p): #adds user name and pass into database
     db.close()
 
 def getStory(storyID): #returns row requested
-    db = sqlite3.connect('data.db')
+    db = sqlite3.connect(DIR)
     c = db.cursor()
 
     command = '''
@@ -84,8 +85,7 @@ def getStory(storyID): #returns row requested
     return result
 
 def userStories(user): #list of stories user has contributed to
-    data="data.db"
-    db=sqlite3.connect(data)
+    db=sqlite3.connect(DIR)
     c=db.cursor()
 
     command='''
@@ -112,8 +112,7 @@ def userStories(user): #list of stories user has contributed to
 
 def otherStories(user): #list of stories user has not contributed to
     print('get other stories for {}'.format(user))
-    data="data.db"
-    db=sqlite3.connect(data)
+    db=sqlite3.connect(DIR)
     c=db.cursor()
 
     command = '''
@@ -137,7 +136,7 @@ def otherStories(user): #list of stories user has not contributed to
 
 
 def addEdit(username,id,editText): #adds contribution to database
-    db = sqlite3.connect('data.db')
+    db = sqlite3.connect(DIR)
     c = db.cursor()
     command = 'select count(*) from Edits where id=\"{}\" and username=\"{}\"'
     c.execute(command.format(id,username))
@@ -159,7 +158,7 @@ def addEdit(username,id,editText): #adds contribution to database
         return 'Submission successfully added.'
 
 def story(id): #gets the content of the stories
-    db = sqlite3.connect('data.db')
+    db = sqlite3.connect(DIR)
     c = db.cursor()
     command='''Select Story, Title
              From Story_List
@@ -172,7 +171,7 @@ def story(id): #gets the content of the stories
     return result
 
 def update(text,story_id): #updates full story
-    db=sqlite3.connect('data.db')
+    db=sqlite3.connect(DIR)
     c=db.cursor()
     command='''
             Select Story
@@ -192,8 +191,7 @@ def update(text,story_id): #updates full story
     db.close()
 
 def addStory(title,story): #adds a new story to database
-    data="data.db"
-    db=sqlite3.connect(data)
+    db=sqlite3.connect(DIR)
     c=db.cursor()
 
     # determine how many stories already exist
@@ -211,7 +209,7 @@ def addStory(title,story): #adds a new story to database
     return newID
 
 def userHasEdited(username,id): # checks whether story should be visible to user
-    db = sqlite3.connect('data.db')
+    db = sqlite3.connect(DIR)
     c = db.cursor()
 
     command="select count(*) from Edits where ID={} and Username=\'{}\'"
