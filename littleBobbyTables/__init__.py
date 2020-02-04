@@ -8,7 +8,7 @@
 from flask import Flask, render_template, request, redirect, url_for,session, flash, get_flashed_messages
 import os
 import sqlite3
-import databasing
+from utils import databasing
 
 os.path.dirname(__file__)
 DIR = os.path.dirname(__file__) or '.'
