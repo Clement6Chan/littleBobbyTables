@@ -1,7 +1,7 @@
 import sqlite3, hashlib
 
 def buildDB(): #builds a database with three tables
-    data="data.db"
+    data="/var/www/littleBobbyTables/littleBobbyTables/utils/data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
     command="CREATE TABLE if not EXISTS Story_List(ID INTEGER PRIMARY KEY, Title TEXT, Story TEXT)"
