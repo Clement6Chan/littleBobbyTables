@@ -4,7 +4,6 @@ import os
 DIR = os.path.dirname(__file__) or '.'
 DIR += '/data.db'
 
-DIR =
 def buildDB(): #builds a database with three tables
     db=sqlite3.connect(DIR)
     c=db.cursor()
